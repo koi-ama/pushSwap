@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ss.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/08 00:00:00 by user             #+#    #+#             */
+/*   Updated: 2024/05/08 00:00:00 by user            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	op_ss(t_stack **a, t_stack **b)
+{
+	t_stack *first_a;
+	t_stack *second_a;
+	t_stack *first_b;
+	t_stack *second_b;
+
+	if ((!a || !*a || !(*a)->next) && (!b || !*b || !(*b)->next))
+		return ;
+	if (a && *a && (*a)->next)
+	{
+		first_a = *a;
+		second_a = first_a->next;
+		first_a->next = second_a->next;
+		second_a->next = first_a;
+		*a = second_a;
+	}
+	if (b && *b && (*b)->next)
+	{
+		first_b = *b;
+		second_b = first_b->next;
+		first_b->next = second_b->next;
+		second_b->next = first_b;
+		*b = second_b;
+	}
+	ft_putendl_fd("ss", 1);
+}
