@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_large.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kamakasu <kamakasu@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 00:00:00 by user             #+#    #+#             */
-/*   Updated: 2024/05/08 00:00:00 by user            ###   ########.fr       */
+/*   Created: 2024/05/05 15:00:16 by kamakasu          #+#    #+#             */
+/*   Updated: 2024/05/05 15:10:11 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sort_large(t_stack **a, t_stack **b, int size)
+size_t	ft_strlen(const char *s)
 {
-	compress_indices(a);
-	if (size <= 15)
-		quick_sort_a(a, b, size);
-	else
-		radix_sort(a, b, size);
-	rotate_min_to_top(a);
-}
+	size_t	len;
+
+	if (!s)
+		return (0);
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+} 

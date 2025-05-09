@@ -41,13 +41,17 @@ int     ft_atoi(const char *str);
 char    **ft_split(char const *s, char c);
 void    ft_free_split(char **split);
 int     ft_strcmp(const char *s1, const char *s2);
+size_t  ft_strlen(const char *s);
+char    *ft_strdup(const char *s);
 
 // Memory allocation
 void    *ft_calloc(size_t nmemb, size_t size);
 
 // File operations
+void    ft_putchar_fd(char c, int fd);
 void    ft_putstr_fd(char *s, int fd);
 void    ft_putendl_fd(char *s, int fd);
+void    ft_putnbr_fd(int n, int fd);
 char    *get_next_line(int fd);
 
 // List operations

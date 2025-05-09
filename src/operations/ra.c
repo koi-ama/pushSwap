@@ -14,8 +14,8 @@
 
 void	op_ra(t_stack **a)
 {
-	t_stack *first;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!a || !*a || !(*a)->next)
 		return ;

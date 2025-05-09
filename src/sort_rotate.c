@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb.c                                               :+:      :+:    :+:   */
+/*   sort_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,19 +12,42 @@
 
 #include "push_swap.h"
 
-void	op_rb(t_stack **b)
+void	rotate_both(t_stack **a, t_stack **b, int *count_a, int *count_b)
 {
-	t_stack	*first;
-	t_stack	*last;
+	while (*count_a > 0 && *count_b > 0)
+	{
+		op_rr(a, b);
+		(*count_a)--;
+		(*count_b)--;
+	}
+	while (*count_a > 0)
+	{
+		op_ra(a);
+		(*count_a)--;
+	}
+	while (*count_b > 0)
+	{
+		op_rb(b);
+		(*count_b)--;
+	}
+}
 
-	if (!b || !*b || !(*b)->next)
-		return ;
-	first = *b;
-	*b = first->next;
-	last = *b;
-	while (last->next)
-		last = last->next;
-	last->next = first;
-	first->next = NULL;
-	ft_putendl_fd("rb", 1);
+void	rev_rotate_both(t_stack **a, t_stack **b, int *count_a, int *count_b)
+{
+	while (*count_a > 0 && *count_b > 0)
+	{
+		op_rrr(a, b);
+		(*count_a)--;
+		(*count_b)--;
+	}
+	while (*count_a > 0)
+	{
+		op_rra(a);
+		(*count_a)--;
+	}
+	while (*count_b > 0)
+	{
+		op_rrb(b);
+		(*count_b)--;
+	}
 }

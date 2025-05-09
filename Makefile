@@ -33,12 +33,18 @@ COMMON_SRC = $(SRC_DIR)/common.c \
             $(SRC_DIR)/operations/rr.c \
             $(SRC_DIR)/operations/rra.c \
             $(SRC_DIR)/operations/rrb.c \
-            $(SRC_DIR)/operations/rrr.c
+            $(SRC_DIR)/operations/rrr.c \
+            $(SRC_DIR)/index_compression.c
 
 PUSH_SWAP_SRC = $(SRC_DIR)/push_swap.c \
                $(SRC_DIR)/sort_three.c \
                $(SRC_DIR)/sort_five.c \
-               $(SRC_DIR)/sort_large.c
+               $(SRC_DIR)/sort_large.c \
+               $(SRC_DIR)/sort_quick_a.c \
+               $(SRC_DIR)/sort_quick_b.c \
+               $(SRC_DIR)/sort_array.c \
+               $(SRC_DIR)/sort_radix.c \
+               $(SRC_DIR)/sort_rotate.c
 
 CHECKER_SRC = $(SRC_DIR)/checker.c
 
@@ -49,6 +55,9 @@ CHECKER_OBJ = $(CHECKER_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
+
+debug: CFLAGS += -DDEBUG
+debug: clean $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(PUSH_SWAP_OBJ)
 	$(CC) $(CFLAGS) $(INCLUDES) $(COMMON_OBJ) $(PUSH_SWAP_OBJ) $(LIBFT) -o $(NAME)
@@ -76,4 +85,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re 
+.PHONY: all bonus clean fclean re debug 

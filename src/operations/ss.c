@@ -14,10 +14,10 @@
 
 void	op_ss(t_stack **a, t_stack **b)
 {
-	t_stack *first_a;
-	t_stack *second_a;
-	t_stack *first_b;
-	t_stack *second_b;
+	t_stack	*first_a;
+	t_stack	*second_a;
+	t_stack	*first_b;
+	t_stack	*second_b;
 
 	if ((!a || !*a || !(*a)->next) && (!b || !*b || !(*b)->next))
 		return ;

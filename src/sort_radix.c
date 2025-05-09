@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb.c                                               :+:      :+:    :+:   */
+/*   sort_radix.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,19 +12,29 @@
 
 #include "push_swap.h"
 
-void	op_rb(t_stack **b)
+void	radix_sort(t_stack **a, t_stack **b, int size)
 {
-	t_stack	*first;
-	t_stack	*last;
+	int	i;
+	int	j;
+	int	num;
+	int	max_bits;
 
-	if (!b || !*b || !(*b)->next)
-		return ;
-	first = *b;
-	*b = first->next;
-	last = *b;
-	while (last->next)
-		last = last->next;
-	last->next = first;
-	first->next = NULL;
-	ft_putendl_fd("rb", 1);
+	max_bits = get_max_bits(size);
+	i = 0;
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			num = (*a)->index;
+			if ((num >> i) & 1)
+				op_ra(a);
+			else
+				op_pb(a, b);
+			j++;
+		}
+		while (*b)
+			op_pa(a, b);
+		i++;
+	}
 }

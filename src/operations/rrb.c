@@ -14,8 +14,8 @@
 
 void	op_rrb(t_stack **b)
 {
-	t_stack *last;
-	t_stack *second_last;
+	t_stack	*last;
+	t_stack	*second_last;
 
 	if (!b || !*b || !(*b)->next)
 		return ;

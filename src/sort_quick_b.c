@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   sort_quick_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,38 +12,52 @@
 
 #include "push_swap.h"
 
-void	op_rrr(t_stack **a, t_stack **b)
+static void	quick_sort_small_b(t_stack **b, t_stack **a, int size)
 {
-	t_stack	*last_a;
-	t_stack	*second_last_a;
-	t_stack	*last_b;
-	t_stack	*second_last_b;
-
-	if ((!a || !*a || !(*a)->next) && (!b || !*b || !(*b)->next))
+	if (size <= 1)
+	{
+		if (size == 1)
+			op_pa(a, b);
 		return ;
-	if (a && *a && (*a)->next)
-	{
-		last_a = *a;
-		while (last_a->next)
-		{
-			second_last_a = last_a;
-			last_a = last_a->next;
-		}
-		second_last_a->next = NULL;
-		last_a->next = *a;
-		*a = last_a;
 	}
-	if (b && *b && (*b)->next)
+}
+
+static void	quick_sort_partition_b(t_stack **b, t_stack **a, int size,
+		t_quick_sort_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
 	{
-		last_b = *b;
-		while (last_b->next)
+		if ((*b)->index >= data->pivot)
 		{
-			second_last_b = last_b;
-			last_b = last_b->next;
+			op_pa(a, b);
+			data->pushed++;
 		}
-		second_last_b->next = NULL;
-		last_b->next = *b;
-		*b = last_b;
+		else
+		{
+			data->rotated++;
+			op_rb(b);
+		}
+		i++;
 	}
-	ft_putendl_fd("rrr", 1);
+}
+
+void	quick_sort_b(t_stack **b, t_stack **a, int size)
+{
+	t_quick_sort_data	data;
+
+	if (size <= 1)
+	{
+		quick_sort_small_b(b, a, size);
+		return ;
+	}
+	data.pivot = get_median(*b, size);
+	data.pushed = 0;
+	data.rotated = 0;
+	quick_sort_partition_b(b, a, size, &data);
+	quick_sort_a(a, b, data.pushed);
+	rev_rotate_both(a, b, &data.pushed, &data.rotated);
+	quick_sort_b(b, a, size - data.pushed);
 }

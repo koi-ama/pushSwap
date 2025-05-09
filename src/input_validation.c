@@ -97,11 +97,11 @@ int	validate_input(int argc, char **argv)
 
 t_stack	*parse_input(int argc, char **argv)
 {
-	int i;
-	int num;
-	char **args;
-	t_stack *stack;
-	t_stack *new;
+	int		i;
+	int		num;
+	char	**args;
+	t_stack	*stack;
+	t_stack	*new;
 
 	stack = NULL;
 	if (argc == 2)

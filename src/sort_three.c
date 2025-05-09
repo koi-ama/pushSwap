@@ -14,9 +14,9 @@
 
 void	sort_three(t_stack **a)
 {
-	int first;
-	int second;
-	int third;
+	int	first;
+	int	second;
+	int	third;
 
 	first = (*a)->value;
 	second = (*a)->next->value;
