@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sb.c                                               :+:      :+:    :+:   */
+/*   stack_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-09 17:31:58 by koiama            #+#    #+#             */
-/*   Updated: 2025-05-09 17:31:58 by koiama           ###   ########.fr       */
+/*   Created: 2025-05-09 18:01:25 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 18:01:25 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_sb(t_stack **b)
+int	is_duplicate(t_stack *stack, int value)
 {
-	t_stack	*first;
-	t_stack	*second;
+	t_stack	*current;
 
-	if (!b || !*b || !(*b)->next)
-		return ;
-	first = *b;
-	second = first->next;
-	first->next = second->next;
-	second->next = first;
-	*b = second;
-	ft_putendl_fd("sb", 1);
+	current = stack;
+	while (current)
+	{
+		if (current->value == value)
+			return (1);
+		current = current->next;
+	}
+	return (0);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_stack	*current;
+
+	if (!stack)
+		return (1);
+	current = stack;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

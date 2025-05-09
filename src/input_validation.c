@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 00:00:00 by user             #+#    #+#             */
-/*   Updated: 2024/05/08 00:00:00 by user            ###   ########.fr       */
+/*   Created: 2025-05-09 17:30:08 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:30:08 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <errno.h>
+#include <stdlib.h>
 
 static int	is_valid_number(char *str)
 {
@@ -30,41 +32,37 @@ static int	is_valid_number(char *str)
 	return (1);
 }
 
-int	is_duplicate(t_stack *stack, int value)
+static int	check_number(char *str)
 {
-	t_stack	*current;
+	long long	num;
 
-	current = stack;
-	while (current)
-	{
-		if (current->value == value)
-			return (1);
-		current = current->next;
-	}
-	return (0);
+	errno = 0;
+	num = strtoll(str, NULL, 10);
+	if (errno == ERANGE || num < INT_MIN || num > INT_MAX)
+		return (0);
+	if (num == 0 && str[0] != '0')
+		return (0);
+	return (1);
 }
 
-int	is_sorted(t_stack *stack)
+static int	validate_numbers(char **args)
 {
-	t_stack	*current;
+	int	i;
 
-	if (!stack)
-		return (1);
-	current = stack;
-	while (current->next)
+	i = 0;
+	while (args[i])
 	{
-		if (current->value > current->next->value)
+		if (!is_valid_number(args[i]) || !check_number(args[i]))
 			return (0);
-		current = current->next;
+		i++;
 	}
 	return (1);
 }
 
 int	validate_input(int argc, char **argv)
 {
-	int		i;
-	int		num;
 	char	**args;
+	int		result;
 
 	if (argc == 1)
 		return (0);
@@ -72,65 +70,8 @@ int	validate_input(int argc, char **argv)
 		args = ft_split(argv[1], ' ');
 	else
 		args = argv + 1;
-	i = 0;
-	while (args[i])
-	{
-		if (!is_valid_number(args[i]))
-		{
-			if (argc == 2)
-				ft_free_split(args);
-			return (0);
-		}
-		num = ft_atoi(args[i]);
-		if (num == 0 && args[i][0] != '0')
-		{
-			if (argc == 2)
-				ft_free_split(args);
-			return (0);
-		}
-		i++;
-	}
+	result = validate_numbers(args);
 	if (argc == 2)
 		ft_free_split(args);
-	return (1);
-}
-
-t_stack	*parse_input(int argc, char **argv)
-{
-	int		i;
-	int		num;
-	char	**args;
-	t_stack	*stack;
-	t_stack	*new;
-
-	stack = NULL;
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else
-		args = argv + 1;
-	i = 0;
-	while (args[i])
-	{
-		num = ft_atoi(args[i]);
-		if (is_duplicate(stack, num))
-		{
-			clear_stack(&stack);
-			if (argc == 2)
-				ft_free_split(args);
-			error_exit(&stack, NULL);
-		}
-		new = create_node(num);
-		if (!new)
-		{
-			clear_stack(&stack);
-			if (argc == 2)
-				ft_free_split(args);
-			error_exit(&stack, NULL);
-		}
-		add_node_back(&stack, new);
-		i++;
-	}
-	if (argc == 2)
-		ft_free_split(args);
-	return (stack);
+	return (result);
 }

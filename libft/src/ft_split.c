@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 18:04:26 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/06/23 18:04:26 by kamakasu         ###   ########.fr       */
+/*   Created: 2025-05-09 17:32:42 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:32:42 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,4 @@ char	**ft_split(char const *s, char c)
 	}
 	result[i] = NULL;
 	return (result);
-} 
+}

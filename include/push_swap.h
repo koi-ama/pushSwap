@@ -69,7 +69,8 @@ t_stack	*parse_input(int argc, char **argv);
 /* Sorting Algorithms */
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
-void	sort_large(t_stack **a, t_stack **b, int size);
+void	sort_six_to_fifteen(t_stack **a, t_stack **b, int size);
+void	sort_hundred(t_stack **a, t_stack **b);
 void	quick_sort_a(t_stack **a, t_stack **b, int size);
 void	quick_sort_b(t_stack **b, t_stack **a, int size);
 void	radix_sort(t_stack **a, t_stack **b, int size);
@@ -77,6 +78,8 @@ void	radix_sort(t_stack **a, t_stack **b, int size);
 /* Rotation Operations */
 void	rotate_both(t_stack **a, t_stack **b, int *count_a, int *count_b);
 void	rev_rotate_both(t_stack **a, t_stack **b, int *count_a, int *count_b);
+void	smart_rotate(t_stack **stack, int target_pos, void (*rot)(t_stack **),
+		void (*rev_rot)(t_stack **));
 
 /* Index Compression */
 void	compress_indices(t_stack **a);
@@ -87,7 +90,9 @@ int		get_pos_of_min(t_stack *stack);
 void	error_exit(t_stack **a, t_stack **b);
 int		get_min_value(t_stack *stack);
 int		get_max_value(t_stack *stack);
-int		get_position(t_stack *stack, int value);
+int		get_position(t_stack *stack, int val);
+int		get_position_index(t_stack *stack, int index);
+int		get_max_index(t_stack *stack);
 
 /* Array Sorting Utilities */
 int		get_median(t_stack *stack, int size);

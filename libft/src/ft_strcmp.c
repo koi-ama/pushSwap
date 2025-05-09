@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 18:04:26 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/06/23 18:04:26 by kamakasu         ###   ########.fr       */
+/*   Created: 2025-05-09 17:32:53 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:32:53 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,4 @@ int	ft_strcmp(const char *s1, const char *s2)
 		s2++;
 	}
 	return ((unsigned char)*s1 - (unsigned char)*s2);
-} 
+}

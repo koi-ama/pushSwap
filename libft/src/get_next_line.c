@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 22:27:21 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/09 21:42:38 by kamakasu         ###   ########.fr       */
+/*   Created: 2025-05-09 17:33:06 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:33:06 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,4 @@ char	*get_next_line(int fd)
 		return (NULL);
 	ft_putc(&line, '\0');
 	return (line.str);
-} 
+}

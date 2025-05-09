@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42.jp>          +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 13:45:16 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/05/05 13:56:11 by kamakasu         ###   ########.fr       */
+/*   Created: 2025-05-09 17:32:38 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:32:38 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	len;
+
 	if (!s)
-		return;
+		return ;
 	len = 0;
 	while (s[len])
 		len++;

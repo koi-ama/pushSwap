@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 00:00:00 by user             #+#    #+#             */
-/*   Updated: 2024/05/08 00:00:00 by user            ###   ########.fr       */
+/*   Created: 2025-05-09 17:29:54 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:29:54 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,74 +65,6 @@ void	clear_stack(t_stack **stack)
 		current = next;
 	}
 	*stack = NULL;
-}
-
-int	stack_size(t_stack *stack)
-{
-	int		size;
-	t_stack	*current;
-
-	size = 0;
-	current = stack;
-	while (current)
-	{
-		size++;
-		current = current->next;
-	}
-	return (size);
-}
-
-int	get_min_value(t_stack *stack)
-{
-	int		min;
-	t_stack	*current;
-
-	if (!stack)
-		return (0);
-	min = stack->value;
-	current = stack->next;
-	while (current)
-	{
-		if (current->value < min)
-			min = current->value;
-		current = current->next;
-	}
-	return (min);
-}
-
-int	get_max_value(t_stack *stack)
-{
-	int		max;
-	t_stack	*current;
-
-	if (!stack)
-		return (0);
-	max = stack->value;
-	current = stack->next;
-	while (current)
-	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
-	}
-	return (max);
-}
-
-int	get_position(t_stack *stack, int value)
-{
-	int		pos;
-	t_stack	*current;
-
-	pos = 0;
-	current = stack;
-	while (current)
-	{
-		if (current->value == value)
-			return (pos);
-		pos++;
-		current = current->next;
-	}
-	return (-1);
 }
 
 void	error_exit(t_stack **a, t_stack **b)

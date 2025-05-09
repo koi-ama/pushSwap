@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42.jp>          +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 14:30:16 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/05/05 14:40:11 by kamakasu         ###   ########.fr       */
+/*   Created: 2025-05-09 17:32:57 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:32:57 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,4 @@ char	*ft_strdup(const char *s)
 	}
 	dup[i] = '\0';
 	return (dup);
-} 
+}

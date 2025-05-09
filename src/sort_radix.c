@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   sort_radix.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 00:00:00 by user             #+#    #+#             */
-/*   Updated: 2024/05/08 00:00:00 by user            ###   ########.fr       */
+/*   Created: 2025-05-09 17:30:48 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:30:48 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort(t_stack **a, t_stack **b, int size)
+static void	simple_radix_sort(t_stack **a, t_stack **b, int size)
 {
 	int	i;
 	int	j;
 	int	num;
 	int	max_bits;
 
-	max_bits = get_max_bits(size);
+	max_bits = 0;
+	while ((size - 1) >> max_bits)
+		max_bits++;
 	i = 0;
 	while (i < max_bits)
 	{
@@ -37,4 +39,12 @@ void	radix_sort(t_stack **a, t_stack **b, int size)
 			op_pa(a, b);
 		i++;
 	}
+}
+
+void	radix_sort(t_stack **a, t_stack **b, int size)
+{
+	if (!a || !*a || !b)
+		return ;
+	simple_radix_sort(a, b, size);
+	rotate_min_to_top(a);
 }

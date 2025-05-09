@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb.c                                               :+:      :+:    :+:   */
+/*   stack_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 00:00:00 by user             #+#    #+#             */
-/*   Updated: 2024/05/08 00:00:00 by user            ###   ########.fr       */
+/*   Created: 2025-05-09 18:18:50 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 18:18:50 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_rb(t_stack **b)
+int	stack_size(t_stack *stack)
 {
-	t_stack	*first;
-	t_stack	*last;
+	int		size;
+	t_stack	*current;
 
-	if (!b || !*b || !(*b)->next)
-		return ;
-	first = *b;
-	*b = first->next;
-	last = *b;
-	while (last->next)
-		last = last->next;
-	last->next = first;
-	first->next = NULL;
-	ft_putendl_fd("rb", 1);
+	size = 0;
+	current = stack;
+	while (current)
+	{
+		size++;
+		current = current->next;
+	}
+	return (size);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: koiama <koiama@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 18:04:26 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/06/23 18:04:26 by kamakasu         ###   ########.fr       */
+/*   Created: 2025-05-09 17:32:23 by koiama            #+#    #+#             */
+/*   Updated: 2025-05-09 17:32:23 by koiama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,4 @@ void	*ft_memcpy(void *dst, const char *src, size_t n)
 	while (n--)
 		*d++ = *s++;
 	return (dst);
-} 
+}

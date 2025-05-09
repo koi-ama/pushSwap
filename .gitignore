@@ -1,6 +1,13 @@
 .cursor
 DS_Store
 *.o
-checker_Mac
+checker_Linux
 *.md
 *_tester
+checker
+//*.sh
+*.txt
+0
+obj
+*.a
+defence_logs

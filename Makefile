@@ -23,23 +23,23 @@ LIBFT_DIR = libft
 
 COMMON_SRC = $(SRC_DIR)/common.c \
             $(SRC_DIR)/input_validation.c \
+			$(SRC_DIR)/input_parse.c \
             $(SRC_DIR)/operations/sa.c \
             $(SRC_DIR)/operations/sb.c \
             $(SRC_DIR)/operations/ss.c \
             $(SRC_DIR)/operations/pa.c \
             $(SRC_DIR)/operations/pb.c \
-            $(SRC_DIR)/operations/ra.c \
-            $(SRC_DIR)/operations/rb.c \
             $(SRC_DIR)/operations/rr.c \
-            $(SRC_DIR)/operations/rra.c \
-            $(SRC_DIR)/operations/rrb.c \
             $(SRC_DIR)/operations/rrr.c \
-            $(SRC_DIR)/index_compression.c
+            $(SRC_DIR)/index_compression.c \
+            $(SRC_DIR)/stack_utils.c \
+            $(SRC_DIR)/stack_check.c \
+            $(SRC_DIR)/stack_size.c
 
 PUSH_SWAP_SRC = $(SRC_DIR)/push_swap.c \
                $(SRC_DIR)/sort_three.c \
                $(SRC_DIR)/sort_five.c \
-               $(SRC_DIR)/sort_large.c \
+			   $(SRC_DIR)/sort_hundred.c \
                $(SRC_DIR)/sort_quick_a.c \
                $(SRC_DIR)/sort_quick_b.c \
                $(SRC_DIR)/sort_array.c \
