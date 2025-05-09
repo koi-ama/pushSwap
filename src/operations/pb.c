@@ -14,13 +14,21 @@
 
 void	op_pb(t_stack **a, t_stack **b)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!a || !*a)
 		return ;
 	temp = *a;
 	*a = (*a)->next;
-	temp->next = *b;
-	*b = temp;
+	if (!*b)
+	{
+		temp->next = NULL;
+		*b = temp;
+	}
+	else
+	{
+		temp->next = *b;
+		*b = temp;
+	}
 	ft_putendl_fd("pb", 1);
 }

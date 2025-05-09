@@ -14,13 +14,21 @@
 
 void	op_pa(t_stack **a, t_stack **b)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!b || !*b)
 		return ;
 	temp = *b;
 	*b = (*b)->next;
-	temp->next = *a;
-	*a = temp;
+	if (!*a)
+	{
+		temp->next = NULL;
+		*a = temp;
+	}
+	else
+	{
+		temp->next = *a;
+		*a = temp;
+	}
 	ft_putendl_fd("pa", 1);
 }

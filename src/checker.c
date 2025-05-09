@@ -74,22 +74,6 @@ static void	read_instructions(t_stack **a, t_stack **b)
 	}
 }
 
-static int	is_sorted(t_stack *stack)
-{
-	t_stack	*current;
-
-	if (!stack)
-		return (0);
-	current = stack;
-	while (current->next)
-	{
-		if (current->value > current->next->value)
-			return (0);
-		current = current->next;
-	}
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack *a;

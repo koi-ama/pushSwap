@@ -30,7 +30,7 @@ static int	is_valid_number(char *str)
 	return (1);
 }
 
-static int	is_duplicate(t_stack *stack, int value)
+int	is_duplicate(t_stack *stack, int value)
 {
 	t_stack	*current;
 
@@ -44,7 +44,7 @@ static int	is_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-static int	is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	t_stack	*current;
 

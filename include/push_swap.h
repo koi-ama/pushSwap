@@ -50,6 +50,7 @@ int		stack_size(t_stack *stack);
 int		validate_input(int argc, char **argv);
 int		is_duplicate(t_stack *stack, int value);
 int		is_sorted(t_stack *stack);
+t_stack	*parse_input(int argc, char **argv);
 
 /* Sorting Algorithms */
 void	sort_three(t_stack **a);
