@@ -37,7 +37,7 @@ static int	check_number(char *str)
 	long long	num;
 
 	errno = 0;
-	num = strtoll(str, NULL, 10);
+	num = ft_atoi(str);
 	if (errno == ERANGE || num < INT_MIN || num > INT_MAX)
 		return (0);
 	if (num == 0 && str[0] != '0')

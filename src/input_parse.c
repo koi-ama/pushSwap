@@ -55,7 +55,7 @@ t_stack	*parse_input(int argc, char **argv)
 	i = 0;
 	while (args[i])
 	{
-		num = (int)strtoll(args[i], NULL, 10);
+		num = (int)ft_atoi(args[i]);
 		new = create_stack_node(num, &stack);
 		if (!new)
 			cleanup_and_exit(&stack, args, argc);

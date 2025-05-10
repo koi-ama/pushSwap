@@ -16,6 +16,9 @@
 # include "../libft/include/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
+# include <limits.h>
+# include <stddef.h>
 
 /* Data Structures */
 typedef struct s_node
