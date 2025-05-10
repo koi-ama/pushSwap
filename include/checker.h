@@ -16,7 +16,9 @@
 # include "push_swap.h"
 
 # ifdef DEBUG
+
 void	print_stacks(t_stack *a, t_stack *b, char *op_name);
+
 # endif
 
-#endif 
+#endif
