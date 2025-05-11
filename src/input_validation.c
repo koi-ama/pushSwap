@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:30:08 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:12:25 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/11 03:04:54 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ static int	check_number(char *str)
 
 	errno = 0;
 	num = ft_atoi(str);
-	if (errno == ERANGE || num < INT_MIN || num > INT_MAX)
+	if (num < INT_MIN || num > INT_MAX)
 		return (0);
-	if (num == 0 && str[0] != '0')
+	// Check for leading zeros
+	if (str[0] == '0' && str[1] != '\0')
+		return (0);
+	// Check for +/- followed by leading zeros
+	if ((str[0] == '+' || str[0] == '-') && str[1] == '0' && str[2] != '\0')
 		return (0);
 	return (1);
 }

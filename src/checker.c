@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:29:46 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:12:04 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/11 15:33:53 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ static int	validate_instruction(char *s)
 
 static void	execute_push_swap(t_stack **a, t_stack **b, char *instruction)
 {
+	if ((ft_strcmp(instruction, "sa") == 0 || ft_strcmp(instruction, "ss") == 0) && 
+		(!*a || !(*a)->next))
+	{
+		error_exit(a, b);
+	}
+	if ((ft_strcmp(instruction, "sb") == 0 || ft_strcmp(instruction, "ss") == 0) && 
+		(!*b || !(*b)->next))
+	{
+		error_exit(a, b);
+	}
+
 	if (ft_strcmp(instruction, "sa") == 0)
 		op_sa(a);
 	else if (ft_strcmp(instruction, "sb") == 0)
@@ -68,17 +79,20 @@ static int	execute_instruction(t_stack **a, t_stack **b, char *instruction)
 static void	read_instructions(t_stack **a, t_stack **b)
 {
 	char	*instruction;
+	int		received_instruction;
 
+	received_instruction = 0;
 	while (1)
 	{
 		instruction = get_next_line(STDIN_FILENO);
 		if (!instruction)
-			break ;
+			break;
 		if (instruction[0] == '\n' || instruction[0] == '\0')
 		{
 			free(instruction);
-			continue ;
+			continue;
 		}
+		received_instruction = 1;
 		if (!validate_instruction(instruction))
 		{
 			free(instruction);
@@ -87,6 +101,9 @@ static void	read_instructions(t_stack **a, t_stack **b)
 		execute_instruction(a, b, instruction);
 		free(instruction);
 	}
+	
+	if (!received_instruction)
+		error_exit(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -98,13 +115,35 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!validate_input(argc, argv))
 		error_exit(NULL, NULL);
+	if (argc == 2 && argv[1][0] == '\0')
+		error_exit(NULL, NULL);
 	a = parse_input(argc, argv);
+	if (!a && argc > 1)
+		error_exit(NULL, NULL);
 	b = NULL;
-	read_instructions(&a, &b);
-	if (is_sorted(a) && !b)
-		ft_putendl_fd("OK", 1);
+	
+	// 要素数が1以下の場合の特別処理
+	if (stack_size(a) <= 1)
+	{
+		// 単一要素の場合、どんな入力（空入力含む）もエラーとする
+		char *instruction = get_next_line(STDIN_FILENO);
+		// 残りの入力を読み捨てる
+		while (instruction)
+		{
+			free(instruction);
+			instruction = get_next_line(STDIN_FILENO);
+		}
+		error_exit(&a, &b);
+	}
 	else
-		ft_putendl_fd("KO", 1);
+	{
+		read_instructions(&a, &b);
+		if (is_sorted(a) && !b)
+			ft_putendl_fd("OK", 1);
+		else
+			ft_putendl_fd("KO", 1);
+	}
+	
 	clear_stack(&a);
 	clear_stack(&b);
 	return (0);

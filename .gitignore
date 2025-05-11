@@ -16,3 +16,4 @@ defence_logs
 defence_*
 0
 push_swap
+push_swap_test.sh

@@ -6,13 +6,13 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:32:12 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:09:13 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/11 03:04:45 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	long long	result;
 	int			sign;
@@ -32,10 +32,10 @@ int	ft_atoi(const char *str)
 	{
 		if (ft_isdigit(*str) && ((LONG_MIN + (*str - '0')) / 10 > -result)
 			&& (sign < 0))
-			return ((int)LONG_MIN);
+			return (LONG_MIN);
 		else if (ft_isdigit(*str) && ((LONG_MAX - (*str - '0')) / 10 < result)
 			&& (sign > 0))
-			return ((int)LONG_MAX);
+			return (LONG_MAX);
 		result = result * 10 + (*str++ - '0');
 	}
 	return (result * sign);

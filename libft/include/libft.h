@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:02:32 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:11:14 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/11 03:04:33 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void				*ft_memcpy(void *dst, const char *src, size_t n);
 
 // String functions
 int					ft_isdigit(int c);
-int					ft_atoi(const char *str);
+long long			ft_atoi(const char *str);
 char				**ft_split(char const *s, char c);
 void				ft_free_split(char **split);
 int					ft_strcmp(const char *s1, const char *s2);
