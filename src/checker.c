@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:29:46 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/11 18:14:08 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:16:30 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,7 @@ static int	execute_instruction(t_stack **a, t_stack **b, char *instruction)
 static void	read_instructions(t_stack **a, t_stack **b)
 {
 	char	*instruction;
-	int		received_instruction;
 
-	received_instruction = 0;
 	while (1)
 	{
 		instruction = get_next_line(STDIN_FILENO);
@@ -92,7 +90,6 @@ static void	read_instructions(t_stack **a, t_stack **b)
 			free(instruction);
 			continue;
 		}
-		received_instruction = 1;
 		if (!validate_instruction(instruction))
 		{
 			free(instruction);
@@ -101,9 +98,6 @@ static void	read_instructions(t_stack **a, t_stack **b)
 		execute_instruction(a, b, instruction);
 		free(instruction);
 	}
-	
-	if (!received_instruction)
-		error_exit(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -122,12 +116,19 @@ int	main(int argc, char **argv)
 		error_exit(NULL, NULL);
 	b = NULL;
 	
-	// 要素数が1以下の場合の特別処理
 	if (stack_size(a) <= 1)
 	{
-		// 単一要素の場合、どんな入力（空入力含む）もエラーとする
 		char *instruction = get_next_line(STDIN_FILENO);
-		// 残りの入力を読み捨てる
+		if (!instruction)  // 入力がなければそのままOK or KO
+		{
+			if (is_sorted(a) && !b)
+				ft_putendl_fd("OK", 1);
+			else
+				ft_putendl_fd("KO", 1);
+			clear_stack(&a);
+			clear_stack(&b);
+			exit(0);
+		}
 		while (instruction)
 		{
 			free(instruction);
@@ -138,7 +139,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		read_instructions(&a, &b);
-		if (is_sorted(a) && !b)
+		if (is_sorted(a) && stack_size(b) == 0)
 			ft_putendl_fd("OK", 1);
 		else
 			ft_putendl_fd("KO", 1);
