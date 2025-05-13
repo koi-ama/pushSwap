@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:43:59 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:11:40 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:17:24 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,21 @@ static void	rev_rotate_stack(t_stack **stack)
 void	op_rra(t_stack **a)
 {
 	rev_rotate_stack(a);
-	ft_putendl_fd("rra", 1);
+	if (*a && (*a)->print_ops)
+		ft_putendl_fd("rra", 1);
 }
 
 void	op_rrb(t_stack **b)
 {
 	rev_rotate_stack(b);
-	ft_putendl_fd("rrb", 1);
+	if (*b && (*b)->print_ops)
+		ft_putendl_fd("rrb", 1);
 }
 
 void	op_rrr(t_stack **a, t_stack **b)
 {
 	rev_rotate_stack(a);
 	rev_rotate_stack(b);
-	ft_putendl_fd("rrr", 1);
+	if ((a && *a && (*a)->print_ops) || (b && *b && (*b)->print_ops))
+		ft_putendl_fd("rrr", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:31:21 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:11:30 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:17:22 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	op_pb(t_stack **a, t_stack **b)
 		temp->next = *b;
 		*b = temp;
 	}
-	ft_putendl_fd("pb", 1);
+	if (*b && (*b)->print_ops)
+		ft_putendl_fd("pb", 1);
 }

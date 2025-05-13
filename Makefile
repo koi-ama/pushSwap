@@ -46,7 +46,9 @@ PUSH_SWAP_SRC = $(SRC_DIR)/push_swap.c \
                $(SRC_DIR)/sort_radix.c \
                $(SRC_DIR)/sort_rotate.c
 
-CHECKER_SRC = $(SRC_DIR)/checker.c
+CHECKER_SRC = $(SRC_DIR)/checker.c \
+              $(SRC_DIR)/checker_exec.c \
+              $(SRC_DIR)/checker_utils.c
 
 COMMON_OBJ = $(COMMON_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -56,14 +58,13 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
-debug: CFLAGS += -DDEBUG
-debug: clean $(NAME)
-
 $(NAME): $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(PUSH_SWAP_OBJ)
 	$(CC) $(CFLAGS) $(INCLUDES) $(COMMON_OBJ) $(PUSH_SWAP_OBJ) $(LIBFT) -o $(NAME)
 
-bonus: $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(CHECKER_OBJ)
-	$(CC) $(CFLAGS) $(INCLUDES) $(COMMON_OBJ) $(CHECKER_OBJ) $(LIBFT) -o $(BONUS)
+checker: $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(CHECKER_OBJ)
+	$(CC) $(CFLAGS) $(INCLUDES) $(COMMON_OBJ) $(CHECKER_OBJ) $(LIBFT) -o checker
+
+bonus: checker
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -85,4 +86,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re debug 
+.PHONY: all bonus clean fclean re 

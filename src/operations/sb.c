@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:31:58 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:11:52 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:17:15 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	op_sb(t_stack **b)
 	first->next = second->next;
 	second->next = first;
 	*b = second;
-	ft_putendl_fd("sb", 1);
+	if (*b && (*b)->print_ops)
+		ft_putendl_fd("sb", 1);
 }

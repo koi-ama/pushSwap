@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:30:52 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:13:06 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:17:30 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ void	rev_rotate_both(t_stack **a, t_stack **b, int *count_a, int *count_b)
 	}
 }
 
-void	smart_rotate(t_stack **stack, int target_pos, void (*rot)(t_stack **),
-		void (*rev_rot)(t_stack **))
+void	smart_rotate(t_stack **stack, int target_pos,
+					void (*rot)(t_stack **),
+					void (*rev_rot)(t_stack **))
 {
 	int	size;
 	int	rotations;

@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:30:08 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/11 18:14:08 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:42:46 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ static int	check_number(char *str)
 	num = ft_atoi(str);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
-	// Check for leading zeros
 	if (str[0] == '0' && str[1] != '\0')
 		return (0);
-	// Check for +/- followed by leading zeros
 	if ((str[0] == '+' || str[0] == '-') && str[1] == '0' && str[2] != '\0')
 		return (0);
 	return (1);
@@ -78,4 +76,16 @@ int	validate_input(int argc, char **argv)
 	if (argc == 2)
 		ft_free_split(args);
 	return (result);
+}
+
+void	set_print_ops(t_stack *stack, int value)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (tmp)
+	{
+		tmp->print_ops = value;
+		tmp = tmp->next;
+	}
 }

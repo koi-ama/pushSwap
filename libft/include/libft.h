@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:02:32 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/11 18:14:08 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 23:47:56 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ long long			ft_atoi(const char *str);
 char				**ft_split(char const *s, char c);
 void				ft_free_split(char **split);
 int					ft_strcmp(const char *s1, const char *s2);
+char				*ft_strchr(const char *s, int c);
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s);
 

@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 04:09:06 by kamakasu          #+#    #+#             */
-/*   Updated: 2025/05/10 04:09:07 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:42:18 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_node
 {
 	int				value;
 	int				index;
+	int				print_ops;
 	struct s_node	*next;
 }					t_node;
 
@@ -36,14 +37,6 @@ typedef struct s_quick_sort_data
 	int				pushed;
 	int				rotated;
 }					t_quick_sort_data;
-
-/* Debug Functions */
-# ifdef DEBUG
-
-void				print_stack_debug(t_stack *stack, const char *msg);
-void				print_stacks_debug(t_stack *a, t_stack *b, const char *msg);
-
-# endif
 
 /* Stack Operations */
 void				op_sa(t_stack **a);
@@ -70,6 +63,7 @@ int					validate_input(int argc, char **argv);
 int					is_duplicate(t_stack *stack, int value);
 int					is_sorted(t_stack *stack);
 t_stack				*parse_input(int argc, char **argv);
+void				set_print_ops(t_stack *stack, int value);
 
 /* Sorting Algorithms */
 void				sort_three(t_stack **a);
@@ -86,7 +80,8 @@ void				rotate_both(t_stack **a, t_stack **b, int *count_a,
 void				rev_rotate_both(t_stack **a, t_stack **b, int *count_a,
 						int *count_b);
 void				smart_rotate(t_stack **stack, int target_pos,
-						void (*rot)(t_stack **), void (*rev_rot)(t_stack **));
+						void (*rot)(t_stack **),
+						void (*rev_rot)(t_stack **));
 
 /* Index Compression */
 void				compress_indices(t_stack **a);

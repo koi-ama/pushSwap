@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:30:14 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/10 04:12:30 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:35:52 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static void	sort_stack(t_stack **a, t_stack **b)
 	int	size;
 
 	size = stack_size(*a);
-	if (size <= 1)
-		return ;
-	if (is_sorted(*a))
+	if (size <= 1 || is_sorted(*a))
 		return ;
 	compress_indices(a);
 	if (size == 2)
@@ -52,6 +50,7 @@ int	main(int argc, char **argv)
 	if (!a)
 		error_exit(NULL, NULL);
 	b = NULL;
+	set_print_ops(a, 1);
 	sort_stack(&a, &b);
 	clear_stack(&a);
 	clear_stack(&b);
