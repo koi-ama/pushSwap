@@ -46,9 +46,7 @@ PUSH_SWAP_SRC = $(SRC_DIR)/push_swap.c \
                $(SRC_DIR)/sort_radix.c \
                $(SRC_DIR)/sort_rotate.c
 
-CHECKER_SRC = $(SRC_DIR)/checker.c \
-              $(SRC_DIR)/checker_exec.c \
-              $(SRC_DIR)/checker_utils.c
+CHECKER_SRC = $(SRC_DIR)/checker.c
 
 COMMON_OBJ = $(COMMON_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

@@ -6,13 +6,11 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:30:08 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/13 18:42:46 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/18 14:30:04 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <errno.h>
-#include <stdlib.h>
 
 static int	is_valid_number(char *str)
 {

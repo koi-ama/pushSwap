@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 04:09:06 by kamakasu          #+#    #+#             */
-/*   Updated: 2025/05/13 18:42:18 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/18 14:26:58 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int					is_duplicate(t_stack *stack, int value);
 int					is_sorted(t_stack *stack);
 t_stack				*parse_input(int argc, char **argv);
 void				set_print_ops(t_stack *stack, int value);
+int					is_eol(char c);
 
 /* Sorting Algorithms */
 void				sort_three(t_stack **a);

@@ -18,3 +18,4 @@ defence_*
 push_swap
 push_swap_test.sh
 *.bak*
+escape*

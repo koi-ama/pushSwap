@@ -6,13 +6,11 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:38:25 by koiama            #+#    #+#             */
-/*   Updated: 2025/05/11 03:05:07 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/18 14:29:18 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <errno.h>
-#include <stdlib.h>
 
 static t_stack	*create_stack_node(int num, t_stack **stack)
 {
@@ -65,4 +63,9 @@ t_stack	*parse_input(int argc, char **argv)
 	if (argc == 2)
 		ft_free_split(args);
 	return (stack);
+}
+
+int	is_eol(char c)
+{
+	return (c == '\n' || c == '\r');
 }
