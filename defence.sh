@@ -55,6 +55,9 @@ print(*random.sample(range(r1,r2+1),n))
 PY
 }
 
+DEF_COLOR='\033[0;39m'
+MAGENTA='\033[0;95m'
+
 print_ok()  { printf "  ${GRN}✔ %s${CLR}\n" "$1"; }
 print_fail(){ printf "  ${RED}❌ %s${CLR}\n" "$1"; FAIL=1; }
 
@@ -84,6 +87,10 @@ run() {                               # $1: list  $2: checker
 
   echo "$moves $res"
 }
+
+printf ${MAGENTA}"\n-------------------------------------------------------------\n"${DEF_COLOR};
+printf ${MAGENTA}"\n\t\t\t Mandatory\t\t\n"${DEF_COLOR};
+printf ${MAGENTA}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
 
 # ---------- 1. build check ---------------------------------------------------
 printf "${YLW}== Build check ==${CLR}\n"
@@ -160,6 +167,12 @@ else score=0; FAIL=1
 fi
 printf "  moves=%s  => score %s/5\n" "$m" "$score"
 
+if [[ $BONUS -eq 1 ]]; then
+  printf ${MAGENTA}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
+  printf ${MAGENTA}"\n\t\t\t  BONUS\t\t\n"${DEF_COLOR};
+  printf ${MAGENTA}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
+fi
+
 # ---------- Checker tests ---------------------------------------------------
 if [[ $BONUS -eq 1 ]]; then
 printf "${YLW}\n== Checker error‑management ==${CLR}\n"
@@ -193,12 +206,12 @@ fi
 printf "${YLW}\n== Checker false / right tests ++ ==${CLR}\n"
 printf "sa\npb\nrrr\n" | $CHK_BONUS 0 9 1 8 2 7 3 6 4 5 | grep -q KO \
    && print_ok "false‑KO list1" || print_fail "false‑KO list1"
-RAND=$(jot -r 5 0 50 | tr '\n' ' ')
+RAND=$(seq 0 100 | shuf | head -n 5 | tr '\n' ' ')
 printf "sa\n" | $CHK_BONUS $RAND | grep -q KO \
    && print_ok "false‑KO random" || print_fail "false‑KO random"
 printf "" | $CHK_BONUS 0 1 2 | grep -q OK \
    && print_ok "right‑OK empty" || print_fail "right‑OK empty"
-RARG=$(jot -r 5 0 100 | tr '\n' ' ')
+RARG=$(shuf -i 0-100 -n 5 | tr '\n' ' ')
 RIGHT=$($PSW $RARG)
 echo "$RIGHT" | $CHK_BONUS $RARG | grep -q OK \
    && print_ok "right‑OK random" || print_fail "right‑OK random"
@@ -220,7 +233,11 @@ fi
 # ---------- summary ----------------------------------------------------------
 echo -e "\n==============================================="
 if [[ $FAIL -eq 0 ]]; then
-  echo -e "${GRN}All mandatory checks passed 🙂${CLR}"
+  if [ "$BONUS" = 1 ]; then
+    echo "All mandatory & bonus checks passed 🥳 🎉 ☺️ ✅"
+  else
+    echo "All mandatory checks passed ✅"
+  fi
   exit 0
 else
   echo -e "${RED}Some tests failed — see ❌ above${CLR}"
